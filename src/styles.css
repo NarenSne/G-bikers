@@ -1,0 +1,141 @@
+@import '../node_modules/aos/dist/aos.css';
+@import '../node_modules/ngx-smart-modal/ngx-smart-modal.css';
+@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+@import '../node_modules/@swimlane/ngx-datatable/index.css';
+@import '../node_modules/@swimlane/ngx-datatable/themes/bootstrap.css';
+@import '../node_modules/@swimlane/ngx-datatable/assets/icons.css';
+.popover {
+    width: 180px;
+}
+
+.popover-body {
+    padding: 0px;
+}
+
+.popover-body hr {
+    margin: 0px;
+}
+
+.popover-body div {
+    padding: 10px;
+}
+
+.popover-body div:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.modal-content {
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.modal.show .modal-dialog {
+    max-width: 80%;
+}
+
+.modal-body {
+    max-width: 500px;
+}
+
+.nsm-dialog {
+    max-width: 50%;
+    margin: 8% auto;
+}
+
+@media all and (max-width:800px) {
+    .nsm-dialog {
+        max-width: 80%;
+        margin: 8% auto;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.mat-form-field-outline {
+    border-radius: 21px;
+    border: 1px solid;
+    box-shadow: 0px 3px 9px #00000029;
+}
+
+.mat-form-field-outline>div {
+    display: none;
+}
+
+.mat-form-field {
+    margin: 0px;
+}
+
+.mat-form-field-type-mat-input.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: .5em 0px;
+    border-top-width: 10px;
+    border-bottom: 2px solid transparent;
+}
+
+.mat-form-field-type-mat-select.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: .5em 0px;
+    border-top-width: 10px;
+    border-bottom: 2px solid transparent;
+}
+
+.mat-form-field-appearance-outline div.mat-form-field-wrapper {
+    margin: 0px;
+    padding: 0px;
+}
+
+.datatable-header-inner {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-top-left-radius: 21px;
+    border-top-right-radius: 21px;
+    font-weight: bold;
+}
+
+.datatable-row-center:hover>datatable-body-cell {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.datatable-body-cell-label {
+    text-align: center;
+}
+
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager a {
+    color: #000;
+}
+
+.ngx-datatable.bootstrap .datatable-footer {
+    background-color: #fff;
+    color: #000;
+}
+
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled).active a,
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled):hover a {
+    background-color: #ededed;
+}
+
+button.swal2-confirm.swal2-styled {
+    background: linear-gradient(#EE1C0E 70%, #F9E205 100%);
+    box-shadow: 0px 3px 9px #FFD70036;
+    border-radius: 15px;
+    color: #fff;
+}
+
+button.swal2-styled.swal2-deny {
+    border-radius: 15px;
+    color: #fff;
+}
+
+button.swal2-confirm.swal2-styled:hover {
+    background: linear-gradient(#EE1C0E 70%, #F9E205 100%) !important;
+    color: #fff;
+}
+
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row .datatable-body-cell {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}

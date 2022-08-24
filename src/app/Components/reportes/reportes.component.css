@@ -1,0 +1,29 @@
+#container {
+	height: 100%;
+}
+
+#sidebar {
+	position: fixed;
+	width: 35px;
+    height: 100%;
+    background-color: #000;
+}
+
+.selected{
+    background-color: #fff;
+    border-top-left-radius: 21px;
+    border-bottom-left-radius: 21px;
+}
+.bar > img {
+	float: right;
+    width: 35px !important;
+    padding: 5px;
+}
+
+#content {
+	transisition: margin-left 0.1s;
+	background-color: white;
+	height:100%;
+	margin-left: 50px;
+	padding: 20px;
+}

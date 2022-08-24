@@ -1,0 +1,9 @@
+.contac{
+    background: transparent linear-gradient(180deg, #000 0%, red 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 9px #FFD70036;
+    border-radius: 21px;   
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #000;
+    opacity: 1; /* Firefox */
+  }

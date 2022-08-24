@@ -1,0 +1,88 @@
+<div id="sidebar">
+    <div class="bar pt-3 text-center">
+        <img src="./assets/img/usuario.svg" alt="" style="width: 37px;" (click)="csesion()">
+    </div>
+
+    <div class="bar pt-5 mt-5 text-center" *ngIf="usuario[0].Tipo!='Caja'">
+        <img *ngIf="actual=='Pedidos'" class="p-2 selected" src="./assets/img/carcom.svg" alt="" (click)="pedidos()">
+        <img *ngIf="actual!='Pedidos'" src="./assets/img/carcoma.svg" alt="" (click)="pedidos()">
+    </div>
+
+    <div class="bar pt-2 text-center" *ngIf="usuario[0].Tipo!='Caja' && usuario[0].Tipo!='ROLE_USER'">
+        <img src="./assets/img/caja.svg" *ngIf="actual!='Inventario'" alt="" (click)="inventario()">
+        <img src="./assets/img/product_button.svg" *ngIf="actual=='Inventario'" class="p-2 selected" alt="" (click)="inventario()">
+    </div>
+
+    <div class="bar pt-2 text-center" *ngIf="usuario[0].Tipo!='ROLE_USER'">
+        <img src="./assets/img/inventarios.svg" alt="" (click)="reportes()" *ngIf="actual!='Reportes'">
+        <img src="./assets/img/Agile_kanban_button.svg" alt="" (click)="reportes()" class="p-2 selected" *ngIf="actual=='Reportes'">
+    </div>
+
+    <div class="bar pt-2 text-center" *ngIf="usuario[0].Tipo!='ROLE_USER'">
+        <img src="./assets/img/reportes.svg" alt="" (click)="reporte()" *ngIf="actual!='Reporte'">
+        <img src="./assets/img/reportesv.svg" alt="" (click)="reporte()" class="p-2 selected" *ngIf="actual=='Reporte'">
+    </div>
+    <div class="bar pt-2 text-center" *ngIf="usuario[0].Tipo!='ROLE_USER'">
+        <img src="./assets/img/caja-registradora.svg" alt="" (click)="caja()" *ngIf="actual!='Caja'">
+        <img src="./assets/img/caja-registradoran.svg" alt="" (click)="caja()" class="p-2 selected" *ngIf="actual=='Caja'">
+    </div>
+    <div class="bar pt-2 text-center" style="position: absolute;bottom: 5%;left: 15%;" *ngIf="usuario[0].Tipo!='Caja' && usuario[0].Tipo!='ROLE_USER'">
+        <img src="./assets/img/toma.svg" alt="" (click)="usuarios()">
+    </div>
+</div>
+<ng-template #content2 let-modal>
+    <div class="modal-body container">
+        <button type="button" class="close" aria-label="Close" style="outline: none;" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true" style=" color: #000;">&times;</span>
+          </button>
+        <form>
+            <div class="form-group">
+                <h3 style="font-size: 35px;font-weight: bold; color: #000; text-align:center;" class="py-5">Mi cuenta</h3>
+                <div class="float-left col-md-6 pt-5">
+                    <div class="input-group">
+                        <label style="color: #000; text-align: left;">Nombre</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" style="color: #000000;" class="form-control" name="nombre" [(ngModel)]="usuario[0].nombre">
+                    </div>
+                </div>
+                <div class="float-left col-md-6 pt-5">
+                    <div class="input-group">
+                        <label style="color: #000; text-align: left;" value="secret">Celular</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="number" style="color: #000000;" class="form-control" name="celular" [(ngModel)]="usuario[0].celular">
+                    </div>
+                </div>
+                <div class="float-left col-md-6 pt-5">
+                    <div class="input-group">
+                        <label style="color: #000; text-align: left;">Correo</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" style="color: #000000;" class="form-control" name="email" [(ngModel)]="usuario[0].email">
+                    </div>
+                </div>
+                <div class="float-left col-md-6 pt-5">
+                    <div class="input-group">
+                        <label style="color: #000; text-align: left;" value="secret">Contraseña</label>
+                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" style="color: #000000;" class="form-control" name="password" [(ngModel)]="usuario[0].password">
+                    </div>
+                </div>
+                <label class="col-12 m" style="font-size: 12px;color: #000;margin-right: 20px;text-align: right;" id="cambiar" onclick="document.getElementById('cambiar').style.display='none'; document.getElementById('nueva').classList.remove('d-none');">Cambiar contraseña</label>
+                <div class="float-right col-md-6 d-none" id="nueva">
+                    <div class="input-group">
+                        <label style="color: #000; text-align: left;" value="secret">Nueva Contraseña</label>
+                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" style="color: #000000;" class="form-control" name="newPassword" [(ngModel)]="newPassword">
+                    </div>
+                </div>
+                <div class="btn mt-5" (click)="guardar()" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%); box-shadow: 0px 2px 9px #FFD70036; border-radius: 15px; color: #fff; font-weight: 700; margin-left: 36%;"><img style="height: 30px;">Actualizar</div>
+            </div>
+        </form>
+    </div>
+</ng-template>

@@ -1,0 +1,113 @@
+<app-banner></app-banner>
+<div class="container mt-5">
+    <div class="row" *ngIf="comentarios.length>0">
+        <div class="col-12 fondo py-2">
+            <div class="float-left col-4 text-center">Producto</div>
+            <div class="float-left col-2 text-center">Imagen</div>
+            <div class="float-left col-2 text-center">Código</div>
+            <div class="float-left col-2 text-center">Cantidad</div>
+            <div class="float-left col-2 text-center">Eliminar</div>
+        </div>
+        <div class="col-12 float-left px-0 ">
+            <div  style="height: 250px; overflow: auto;" class="porduc">
+                <div class="col-12 d-flex py-3 float-left px-0 " *ngFor="let comen of comentarios">
+                    <div class="float-left col-4 text-center" style="display: flex;justify-content: center;align-items: center;">{{comen.producto.nombre}}</div>
+                    <div class="float-left col-2 text-center" style="display: flex;justify-content: center;align-items: center;"><img [src]="comen.producto.urlImg" alt="" class="img-fluid"></div>
+                    <div class="float-left col-2 text-center" style="display: flex;justify-content: center;align-items: center;">{{comen.producto.codigo}}</div>
+                    <div class="float-left col-2 text-center" style="display: flex;justify-content: center;align-items: center;"><span class="mx-2" (click)="disminuir(comen)" style="cursor: pointer;">-</span>{{comen.cantidad}}<span class="mx-2" style="cursor: pointer;" (click)="add(comen)">+</span></div>
+                    <div class="float-left col-2 text-center" style="display: flex;justify-content: center;align-items: center;"><img src="./assets/img/Eliminar.png" alt="" (click)="eliminar(comen.producto.codigo)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contac">
+    <div class="container py-4 mt-4">
+        <div class="row">
+            <h3 style="font-size: 35px; color: #000; text-align:center; font-weight: 500;" class="py-1 col-12">Formulario de solicitud</h3>
+            <form [formGroup]="form" (submit)="pedidos()">
+                <div class="col-12 float-left">
+                    <div class="col-12">
+                        <div class="col-12 float-left px-0">
+                            <div class="form-group col-md-6 float-left">
+                                <label style="color: #000; text-align: left;">Nombre</label><br>
+                                <mat-form-field appearance="outline"  class="form-group w-100 px-0 float-left">
+                                    <input type="text" matInput style="color: #000000;box-shadow: none;" formControlName="name">
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group col-md-6 float-left">
+                                <label style="color: #000; text-align: left;">Número de identificación</label><br>
+                                <mat-form-field appearance="outline" class="form-group w-25 px-0 float-left">
+                                    <mat-select formControlName="tipo">
+                                      <mat-option value="CC">CC</mat-option>
+                                      <mat-option value="CE">CE</mat-option>
+                                      <mat-option value="CE">NIT</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field appearance="outline"  class="form-group w-75 px-0 float-left">
+                                    <input type="number" matInput  style="color: #000000;" formControlName="identif">
+                                  </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-12 float-left px-0">
+                            <div class="form-group col-md-6 float-left">
+                                <label style="color: #000; text-align: left;">Correo</label><br>
+                                <mat-form-field appearance="outline"  class="form-group w-100 px-0 float-left">
+                                    <input type="email" style="color: #000000;" formControlName="user" matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group col-md-6 float-left">
+                                <label style="color: #000; text-align: left;">Dirección</label><br>
+                                <mat-form-field appearance="outline"  class="form-group w-100 px-0 float-left">
+                                    <input type="text" style="color: #000000;" formControlName="direccion" matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-12 float-left px-0">
+                            <div class="form-group col-md-6 float-left">
+                                <label style="color: #000; text-align: left;">Teléfono</label><br>
+                                <mat-form-field appearance="outline"  class="form-group w-100 px-0 float-left">
+                                    <input type="number" style="color: #000000;"  formControlName="telefono" matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group col-md-6 float-left">
+                                <label style="color: #000; text-align: left;">Cuidad</label><br>
+                                <mat-form-field appearance="outline" class="form-group w-100 px-0 float-left">
+                                    <mat-select formControlName="Cuidad" [(ngModel)]="Cuidad">
+                                      <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ciudad.desc}}</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6 float-left">
+                            <label style="color: #000; text-align: left;">¿Usted a qué se dedica?</label><br>
+                            <mat-form-field appearance="outline" class="form-group w-100 px-0 float-left">
+                                <input formControlName="persona" [(ngModel)]="persona" matInput>
+                              </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-6 float-left">
+                            <label style="color: #000; text-align: left;">¿A qué se dedica su negocio?</label><br>
+                            <mat-form-field appearance="outline" class="form-group w-100 px-0 float-left">
+                                <input formControlName="negocio" [(ngModel)]="negocio" matInput>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 float-left">
+                    <div class="col-12">
+                        <div class="form-group mb-3">
+                            <label style="color: #000; text-align: left;">Descripción</label><br>
+                            <mat-form-field appearance="outline"  class="form-group w-100 px-0 float-left">
+                                <textarea class="form-control" style="color: rgb(0, 0, 0);margin-top: 0px;margin-bottom: 0px;height: 146px;" spellcheck="false" data-gramm="false" matInput formControlName="Comentario"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn w-25 my-4" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 2px 9px #FFD70036;border-radius: 15px;color: #fff;font-weight: 700;">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

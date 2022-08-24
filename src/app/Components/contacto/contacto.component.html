@@ -1,0 +1,70 @@
+<app-banner></app-banner>
+<h3 style="font-size: 2.3rem;font-weight: bold; color: #000; text-align:center;" class="py-5">CONTACTO</h3>
+    <div class=" text-center container py-3" style="padding-top: 15%;font-size:22px;color: #707070;">
+       
+    </div>
+    <div class="container py-4 contac mb-5 mt-4">
+        <div class="row">
+            <h3 style="font-size: 35px; color: #fff; text-align:center;" class="py-1 col-12">Contáctanos</h3>
+            <form [formGroup]="form" class="w-100">
+                <div class="col-md-6 float-left">
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <input type="text" style="color: #000000;" class="form-control" placeholder="Nombre" formControlName="nombre">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="email" style="color: #000000;" class="form-control" placeholder="Correo" formControlName="correo">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="number" style="color: #000000;" class="form-control" placeholder="Teléfono" formControlName="telefono">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" style="color: #000000;" class="form-control" placeholder="¿Usted a qué se dedica?" formControlName="persona">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" style="color: #000000;" class="form-control" placeholder="¿A qué se dedica su negocio?" formControlName="dedica">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 float-left">
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <textarea placeholder="Descripción" class="form-control" style="color: rgb(0, 0, 0);margin-top: 0px;margin-bottom: 0px;height: 251px;" spellcheck="false" data-gramm="false" formControlName="desc"></textarea>
+                            <div class="btn mt-5" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 2px 9px #FFD70036;border-radius: 15px;color: #fff;font-weight: 700;position: absolute;right: 4px;bottom: 4px;" (click)="enviar()">Enviar</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container py-4 mb-5">
+        <div class="row">
+            <div class="col-md-4 float-left">
+                <div class="text-center">
+                    <img _ngcontent-bkt-c131="" src="./assets/img/local.jpg" alt="" style="
+                    width: 100%;
+                ">
+                </div>
+            </div>
+            <div class="col-md-4 float-left">
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <h5 style="font-size: 24px;color: #000; text-align:center;" class="py-2 col-12">Horario de atención</h5>
+                        <div class="text-center col-12" style="font: size 20;color: #707070;">
+                            ​Lunes a Viernes 8:00 am - 6:00 pm​<br>Sábado 8:00 am - 6:00 pm<br>Domingo 9:00 am - 4:00 pm<br><br> Calle 17 # 15 - 39 Local 101<br>Calle 17 # 14 - 20 Local 109<br>Bogotá, Colombia.
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 float-left">
+                <div class="col-12">
+                    <div class="text-center">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1988.4629425263668!2d-74.07880144214857!3d4.607290172707277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f997551e66579%3A0x88bdfdfb553f8740!2sCl.%2017%20%2314-20%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1604808597623!5m2!1ses!2sco" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>                
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </div>      
+    <app-footer></app-footer>
+
+    

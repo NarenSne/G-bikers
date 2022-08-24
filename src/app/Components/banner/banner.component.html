@@ -1,0 +1,464 @@
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body container">
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          style="outline: none"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" style="color: #000">&times;</span>
+        </button>
+        <form>
+          <div class="form-group">
+            <h3
+              style="
+                font-size: 35px;
+                font-weight: bold;
+                color: #000;
+                text-align: center;
+              "
+              class="py-5"
+            >
+              Iniciar sesión
+            </h3>
+            <div class="input-group col-md-6 offset-3">
+              <label style="color: #000; text-align: left">Usuario</label>
+            </div>
+            <div class="input-group col-md-6 offset-3">
+              <input
+                type="email"
+                style="color: #000000"
+                class="form-control"
+                [(ngModel)]="user"
+                name="usuario"
+              />
+            </div>
+            <div class="input-group col-md-6 offset-3 pt-3s">
+              <label style="color: #000; text-align: left" value="secret"
+                >Contraseña</label
+              >
+              <span
+                toggle="#password-field"
+                class="fa fa-fw fa-eye field-icon toggle-password"
+              ></span>
+            </div>
+            <div class="input-group col-md-6 offset-3">
+              <input
+                type="password"
+                style="color: #000000"
+                class="form-control"
+                [(ngModel)]="constrase"
+                name="password"
+              />
+            </div>
+            <!--<h5
+              class="py-3"
+              style="font-size: 12px; color: #000; text-align: center"
+            >
+              ¿Olvidaste tu contraseña?
+            </h5>-->
+            <div
+              class="btn"
+              style="
+                background: linear-gradient(#000, #FFD700);
+                box-shadow: 0px 2px 9px #FFD70036;
+                border-radius: 15px;
+                color: #fff;
+                font-weight: 700;
+                margin-left: 36%;
+                margin-top: 20px;
+              "
+              (click)="iniciar()"
+            >
+              <img
+                src="./assets/img/paperplane_118202.svg"
+                alt=""
+                class="img-fluid"
+                style="height: 30px"
+              />
+              Ingresar
+            </div>
+            <h5
+              class="pt-4"
+              style="font-size: 12px; color: #000000; text-align: center"
+            >
+              ¿No tienes una cuenta?
+            </h5>
+            <h5
+              class="py-0"
+              style="font-size: 12px; color: #000; text-align: center"
+              data-dismiss="modal"
+              data-toggle="modal"
+              data-target="#exampleModal2"
+            >
+              Regístrate
+            </h5>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModal2Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body container">
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          style="outline: none"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" style="color: #000">&times;</span>
+        </button>
+        <form [formGroup]="form" (submit)="signup()">
+          <div class="form-group">
+            <h3
+              style="
+                font-size: 35px;
+                font-weight: bold;
+                color: #000;
+                text-align: center;
+              "
+              class="py-5"
+            >
+              Crear cuenta
+            </h3>
+            <div class="float-left col-md-6 pt-5">
+              <label style="color: #000; text-align: left">Nombre</label
+              ><br />
+              <mat-form-field
+                appearance="outline"
+                class="form-group w-100 px-0 float-left"
+              >
+                <input
+                  type="text"
+                  matInput
+                  style="color: #000000; box-shadow: none"
+                  formControlName="name"
+                />
+              </mat-form-field>
+            </div>
+            <div class="float-left col-md-6 pt-5">
+              <label style="color: #000; text-align: left">Celular</label>
+              <mat-form-field
+                appearance="outline"
+                class="form-group w-100 px-0 float-left"
+              >
+                <input
+                  type="text"
+                  matInput
+                  style="color: #000000; box-shadow: none"
+                  formControlName="celular"
+                />
+              </mat-form-field>
+            </div>
+            <div class="float-left col-md-6 pt-5">
+              <label style="color: #000; text-align: left">Correo</label>
+              <mat-form-field
+                appearance="outline"
+                class="form-group w-100 px-0 float-left"
+              >
+                <input
+                  type="email"
+                  matInput
+                  style="color: #000000; box-shadow: none"
+                  formControlName="correo"
+                />
+              </mat-form-field>
+            </div>
+            <div class="float-left col-md-6 pt-5">
+              <label style="color: #000; text-align: left" value="secret"
+                >Contraseña</label
+              >
+              <mat-form-field
+                appearance="outline"
+                class="form-group w-100 px-0 float-left"
+              >
+                <input
+                  type="password"
+                  matInput
+                  style="color: #000000; box-shadow: none"
+                  formControlName="password"
+                />
+              </mat-form-field>
+            </div>
+            <div class="form-check col-6 float-left offset-3 pt-4">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+                formControlName="terminos"
+              />
+              <label
+                style="
+                  font-size: 12px; /* font-weight: bold; */
+                  color: #000;
+                  text-align: center;
+                "
+                >Aceptar términos y condiciones</label
+              >
+            </div>
+            <button
+              type="submit"
+              class="btn"
+              style="
+                background: linear-gradient(#000, #FFD700);
+                box-shadow: 0px 2px 9px #FFD70036;
+                border-radius: 15px;
+                color: #fff;
+                font-weight: 700;
+                margin-left: 36%;
+              "
+            >
+              <img
+                _ngcontent-msr-c103=""
+                src="./assets/img/paperplane_118202.svg"
+                alt=""
+                class="img-fluid"
+                style="height: 30px"
+              />Enviar
+            </button>
+            <h5
+              class="pt-4"
+              style="font-size: 12px; color: #000000; text-align: center"
+            >
+              ¿Ya tienes una cuenta?
+            </h5>
+            <h5
+              class="py-0"
+              style="font-size: 12px; color: #000; text-align: center"
+              data-dismiss="modal"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              Inicia sesión
+            </h5>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content2 let-modal>
+  <div class="modal-body container">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      style="outline: none"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true" style="color: #000">&times;</span>
+    </button>
+    <form>
+      <div class="form-group">
+        <h3
+          style="
+            font-size: 35px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+          "
+          class="py-5"
+        >
+          Mi cuenta
+        </h3>
+        <div class="float-left col-md-6 pt-5">
+          <div class="input-group">
+            <label style="color: #000; text-align: left">Nombre</label>
+          </div>
+          <div class="input-group">
+            <input type="text" style="color: #000000" class="form-control" />
+          </div>
+        </div>
+        <div class="float-left col-md-6 pt-5">
+          <div class="input-group">
+            <label style="color: #000; text-align: left" value="secret"
+              >Celular</label
+            >
+          </div>
+          <div class="input-group">
+            <input type="number" style="color: #000000" class="form-control" />
+          </div>
+        </div>
+        <div class="float-left col-md-6 pt-5">
+          <div class="input-group">
+            <label style="color: #000; text-align: left">Correo</label>
+          </div>
+          <div class="input-group">
+            <input type="email" style="color: #000000" class="form-control" />
+          </div>
+        </div>
+        <div class="float-left col-md-6 pt-5">
+          <div class="input-group">
+            <label style="color: #000; text-align: left" value="secret"
+              >Contraseña</label
+            >
+            <span
+              toggle="#password-field"
+              class="fa fa-fw fa-eye field-icon toggle-password"
+            ></span>
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              style="color: #000000"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <label
+          class="col-12 m"
+          style="
+            font-size: 12px;
+            color: #000;
+            margin-right: 20px;
+            text-align: right;
+          "
+          id="cambiar"
+          onclick="document.getElementById('cambiar').style.display='none'; document.getElementById('nueva').classList.remove('d-none');"
+          >Cambiar contraseña</label
+        >
+        <div class="float-right col-md-6 d-none" id="nueva">
+          <div class="input-group">
+            <label style="color: #000; text-align: left" value="secret"
+              >Nueva Contraseña</label
+            >
+            <span
+              toggle="#password-field"
+              class="fa fa-fw fa-eye field-icon toggle-password"
+            ></span>
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              style="color: #000000"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div
+          class="btn mt-5"
+          style="
+            background: linear-gradient(#000, #FFD700);
+            box-shadow: 0px 2px 9px #FFD70036;
+            border-radius: 15px;
+            color: #fff;
+            font-weight: 700;
+            margin-left: 36%;
+          "
+        >
+          <img style="height: 30px" />Actualizar
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<div class="banner">
+  <div class="container px-0">
+    <nav class="navbar navbar-expand-sm navbar-dark">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/img/Gbikers.png" alt="logo" style="height: 100px" />
+      </a>
+      <img
+        src="./assets/img/usuario.svg"
+        alt=""
+        style="height: 30px; cursor: pointer; width: 23px"
+        class="d-md-none d-block"
+      />
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapse_Navbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="collapse_Navbar">
+        <ul class="navbar-nav w-100">
+          <li class="nav-item active col-4">
+            <a
+              class="nav-link"
+              data-toggle="tab"
+              href="#home"
+              (click)="inicio()"
+            >
+              INICIO
+            </a>
+          </li>
+
+          <li class="nav-item col-4">
+            <a class="nav-item active">
+              <a
+                class="nav-link"
+                data-toggle="tab"
+                href="#pro"
+                (click)="productos()"
+              >
+                PRODUCTOS
+              </a>
+            </a>
+          </li>
+
+          <li class="nav-item col-4">
+            <a class="nav-item active">
+              <a
+                class="nav-link"
+                data-toggle="tab"
+                href="#ds"
+                (click)="Contacto()"
+              >
+                CONTACTO
+              </a>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <img
+        src="./assets/img/usuario.svg"
+        alt=""
+        style="height: 30px; cursor: pointer"
+        data-toggle="modal"
+        data-target="#exampleModal"
+        class="d-md-block d-none"
+        *ngIf="show"
+      />
+      <img
+        src="./assets/img/usuario.svg"
+        alt=""
+        style="height: 30px; cursor: pointer"
+        class="d-md-block d-none"
+        *ngIf="!show"
+        [ngbPopover]="popContent2"
+      />
+      <ng-template #popContent2>
+        <div (click)="pedidos()">Mi cuenta</div>
+        <hr />
+        <div (click)="csesion()">Cerrar sesión</div>
+        <hr />
+      </ng-template>
+    </nav>
+  </div>
+</div>

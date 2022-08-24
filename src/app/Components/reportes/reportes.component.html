@@ -1,0 +1,76 @@
+<div id="container">
+    <app-sidebar></app-sidebar>
+    <div>
+        <div class="mx-5">
+            <h3 style="font-size: 35px; color: #000; text-align:center; font-weight: 500;" class="pt-5 col-12">Reportes</h3>
+        </div>
+        <section class="container">
+            <div class="row">
+                <div class="col-12 mx-5">
+                    <div class="col-md-4 float-left">
+                        <h2 class="font-weight-bold text-center" style="color:#707070; font-size: 20px;">Fecha</h2>
+                        <mat-form-field appearance="outline" class="form-group px-5 w-100">
+                            <input matInput [(ngModel)]="ano" [value]="ano" (change)="anos($event.target.value)" type="date">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4 float-left" *ngIf="rol=='Admin'">
+                        <h2 class="font-weight-bold text-center" style="color:#707070; font-size: 20px;">Caja</h2>
+                        <mat-form-field appearance="outline" class="form-group px-5 w-100">
+                            <mat-select [(ngModel)]="local" (selectionChange)="anos(ano)">
+                                <mat-option value="">Todos</mat-option>
+                                <mat-option value="Local 1">Local 1</mat-option>
+                                <mat-option value="Local 2">Local 2</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="rol=='Admin'" class="btn py-2 px-4 float-right my-3" (click)="myModal.open();" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Resumen Mensual</div>
+                </div>
+                <div class="my-5 col-12" *ngIf="rows!=null">
+                    El total vendido el dia {{ano}} es: <strong>{{total|currency}}</strong> <br> El total vendido con efectivo el dia {{ano}} es: <strong>{{efectivo|currency}}</strong><br> El total vendido con tarjeta el dia {{ano}} es: <strong>{{tarjeta|currency}}</strong><br>                    El total vendido con nequi el dia {{ano}} es: <strong>{{nequi|currency}}</strong><br>El total vendido con transferencia el dia {{ano}} es: <strong>{{banco|currency}}</strong><br> El total vendido con daviplata el dia {{ano}} es: <strong>{{daviplata|currency}}</strong><br>El
+                    total en caja el dia {{ano}} es:<strong>{{efectivo-salida-vales|currency}}</strong><br><br><br><span *ngIf="salidaadic!=null">El total de gastos adicionales el mes {{ano}} es:<strong>{{salidaadic|currency}}</strong></span><br> El total
+                    en pagos el dia {{ano}} es:<strong>{{salida|currency}}</strong><br> El total en vales el dia {{ano}} es:<strong>{{vales|currency}}</strong><br>
+                    <br>
+                    <div class="btn py-2 px-4 float-right my-3" (click)="Imprimir();" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Imprimir</div>
+                </div>
+                <div class="my-5 col-12" *ngIf="rows!=null">
+                    <ngx-datatable class="bootstrap" [rows]="rows" [headerHeight]="50" [footerHeight]="50" [scrollbarH]="true" rowHeight="60" [limit]="10">
+                        <ngx-datatable-column name="Pagado a">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <div>{{row.pago}}</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Descripcion">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <div>{{row.descripcion}}</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Valor">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <div>{{row.valor|currency}}</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <div style="color: #ef1d0f;font-weight: bold;font-size: 18px;text-transform: uppercase;" (click)="eliminar(row.Id)">Eliminar</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                    <div class="btn py-2 px-4 float-left my-3" (click)="salidas();" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Imprimir</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+<ngx-smart-modal #myModal identifier="myModal">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">Mes</h1>
+            <input type="month" [(ngModel)]="codigo" class="col-11 rounded-pill border-0" style="box-shadow: 0px 3px 9px #00000029;">
+        </div>
+    </div>
+
+    <div class="btn py-2 px-4 float-left my-3" (click)="mensual();myModal.close()" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Actual</div>
+    <div class="btn py-2 px-4 float-right my-3" (click)="fechas();myModal.close()" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Seleccionado</div>
+</ngx-smart-modal>

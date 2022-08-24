@@ -1,0 +1,163 @@
+<div id="container">
+    <app-sidebar></app-sidebar>
+    <div>
+        <div class="mx-5">
+            <h3 style="font-size: 35px; color: #000; text-align:center; font-weight: 500;" class="pt-5 col-12">Caja</h3>
+        </div>
+        <section class="container">
+            <div class="row">
+                <div class="col-3 float-left">
+                    <!--<div>
+                      <h2><img  src="./assets/img/Nuevo.png" alt="" style="width: 50px;">Nueva categoría</h2>
+                    </div>-->
+                    <div style="border-radius: 21px;box-shadow: 0px 2px 4px #00000029;padding: 10px;text-align: end;" class="my-3">
+                        <input style="border: none; width: 90%;" placeholder="Buscar" (keyup)="filter($event)">
+                        <img src="./assets/img/lupa.svg" alt="" style="width: 19px;">
+                    </div>
+                    <br><br><br>
+                    <div>
+                        <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">Total:</h1>
+                        {{total|currency}}
+                    </div>
+                    <br><br><br>
+                    <div *ngIf="total!=0">
+                        <div class="w-100 btn py-2 px-4 float-right my-3" (click)="myModal2.open()" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Pagar</div>
+                    </div>
+                    <br><br><br><br><br>
+                    <div class="w-100 btn py-2 px-4 float-right my-3" (click)="myModal3.open();minus()" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Gasto Diario</div>
+                    <br><br><br><br><br>
+                    <div class="w-100 btn py-2 px-4 float-right my-3" (click)="myModal3.open();admin()" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Gastos Adicionales</div>
+                    <br><br><br><br><br>
+                    <div class="w-100 btn py-2 px-4 float-right my-3" (click)="myModal4.open();" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Vales</div>
+                    <br><br><br><br><br>
+                    <div class="w-100 btn py-2 px-4 float-right my-3" (click)="integrar()" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Integrar local</div>
+
+                </div>
+                <div class="col-9 float-left">
+                    <ngx-datatable class="bootstrap" [rows]="anadir" [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" [scrollbarH]="true" rowHeight="60" [limit]="10">
+                        <ngx-datatable-column name="Codigo">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <div>{{row.codigo}}</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Nombre">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <div>{{row.nombre}}</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Precio">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <div>{{row.precio|currency}}</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Cantidad">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <div>{{row.cantidad}}</div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <div>
+                                    <img src="./assets/img/EditarVerde.png" alt="" style="width: 30px; cursor: pointer;" (click)="edit(row)"> &nbsp;&nbsp;
+                                    <img src="./assets/img/Eliminar.png" alt="" style="width: 30px;" (click)="eliminar(row.codigo)">
+                                </div>
+                            </ng-template>
+                        </ngx-datatable-column>
+                    </ngx-datatable>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<ngx-smart-modal #myModal identifier="myModal" *ngIf="info!=null" (onClose)="salir()">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">Título</h1>
+            <input type="text" [(ngModel)]="myModal.getData()['nombre']" class="col-11 rounded-pill border-0" readonly style="box-shadow: 0px 3px 9px #00000029;">
+            <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">Descripción</h1>
+            <textarea [(ngModel)]="myModal.getData()['descripcion']" class="col-11 rounded-pill border-0" readonly style="box-shadow: 0px 3px 9px #00000029;"></textarea>
+            <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">Precio</h1>
+            <input type="number" step="100" [(ngModel)]="myModal.getData()['precio']" class="col-11 rounded-pill border-0" style="box-shadow: 0px 3px 9px #00000029;">
+            <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">Cantidad</h1>
+            <input type="number" [(ngModel)]="myModal.getData()['cantidad']" class="col-11 rounded-pill border-0" style="box-shadow: 0px 3px 9px #00000029;">
+        </div>
+    </div>
+    <div class="btn py-2 px-4 float-right my-3" (click)="editar();myModal.close()" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Guardar</div>
+</ngx-smart-modal>
+<ngx-smart-modal #myModal2 identifier="myModal2" (onClose)="salir()">
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="form">
+                <div class="col-md-6 float-left">
+                    <img class="img-fluid" src="./assets/img/efectivo.png" alt="Efectivo" style="    width: 20%;">
+
+                    <mat-form-field appearance="outline" class="form-group w-100 px-0 float-left">
+                        <input type="number" [(ngModel)]="efectivos" class="border-0 w-100" style="outline: none;" placeholder="0" matInput formControlName="efectivos">
+                    </mat-form-field>
+
+                </div>
+                <div class="col-md-6 float-left">
+                    <img class="img-fluid" src="./assets/img/nequi.jpg" alt="Nequi" style="    width: 20%;">
+
+                    <mat-form-field appearance="outline" class="form-group w-100 px-0 float-left">
+                        <input type="number" [(ngModel)]="enNequi" class="border-0 w-100" style="outline: none;" placeholder="0" matInput formControlName="enNequi">
+                    </mat-form-field>
+
+                </div>
+                <div class="col-md-6 float-left">
+                    <img class="img-fluid" src="./assets/img/daviplata.png" alt="Daviplata" style="    width: 20%;">
+
+                    <mat-form-field appearance="outline" class="form-group w-100 px-0 float-left">
+                        <input type="number" [(ngModel)]="enDaviplata" class="border-0 w-100" style="outline: none;" placeholder="0" matInput formControlName="enDaviplata">
+                    </mat-form-field>
+
+                </div>
+                <div class="col-md-6 float-left">
+                    <img class="img-fluid" src="./assets/img/tarjeta-credito.jpg" alt="Tarjeta de Credito" style="    width: 20%;">
+
+                    <mat-form-field appearance="outline" class="form-group w-100 px-0 float-left">
+                        <input type="number" [(ngModel)]="enTajera" class="border-0 w-100" style="outline: none;" placeholder="0" matInput formControlName="enTajera">
+                    </mat-form-field>
+
+                </div>
+                <div class="col-md-6 float-left">
+                    <img class="img-fluid" src="./assets/img/banco.png" alt="Transferencia" style="    width: 20%;">
+
+                    <mat-form-field appearance="outline" class="form-group w-100 px-0 float-left">
+                        <input type="number" [(ngModel)]="banco" class="border-0 w-100" style="outline: none;" placeholder="0" matInput formControlName="banco">
+                    </mat-form-field>
+
+                </div>
+                <div class="col-md-12 float-left">
+                    <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">Vueltas</h1>
+                    {{(efectivos+enNequi+enDaviplata+enTajera+banco)-total|currency}}
+                    <div *ngIf="(efectivos+enNequi+enDaviplata+enTajera+banco)-total>=0 && form.valid" (click)="cancelar()" class="btn py-2 px-4 float-right my-3" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Pagar</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</ngx-smart-modal>
+<ngx-smart-modal #myModal3 identifier="myModal3">
+    <div class="row" *ngIf="datass!=null">
+        <div class="col-md-12">
+            <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">Pago a</h1>
+            <input type="text" [(ngModel)]="myModal3.getData()['nombre']" class="col-11 rounded-pill border-0" style="box-shadow: 0px 3px 9px #00000029;">
+            <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">Descripción</h1>
+            <textarea [(ngModel)]="myModal3.getData()['descripcion']" class="col-11 rounded-pill border-0" style="box-shadow: 0px 3px 9px #00000029;"></textarea>
+            <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">valor</h1>
+            <input type="number" [(ngModel)]="myModal3.getData()['precio']" [value]="myModal3.setData()['precio']" class="col-11 rounded-pill border-0" style="box-shadow: 0px 3px 9px #00000029;">
+        </div>
+    </div>
+    <div class="btn py-2 px-4 float-right my-3" (click)="salida();myModal3.close()" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Guardar</div>
+</ngx-smart-modal>
+<ngx-smart-modal #myModal4 identifier="myModal4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">Dado a</h1>
+            <input type="text" [(ngModel)]="valedado" class="col-11 rounded-pill border-0" style="box-shadow: 0px 3px 9px #00000029;">
+            <h1 style="letter-spacing: 0px;  color: #000;  font-weight: bold;  font-size: 20px;" class="my-0">valor</h1>
+            <input type="number" [(ngModel)]="valorvale" class="col-11 rounded-pill border-0" style="box-shadow: 0px 3px 9px #00000029;">
+        </div>
+    </div>
+    <div class="btn py-2 px-4 float-right my-3" (click)="nuevovale(); myModal4.close()" style="background: linear-gradient(#EE1C0E 70%,#F9E205 100%);box-shadow: 0px 3px 9px #FFD70036;border-radius: 15px;color:#fff;font-weight:700;">Guardar</div>
+</ngx-smart-modal>

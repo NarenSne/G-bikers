@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "f6b87e4f-c049-4741-86ba-da0d032049bb",
+		"name": "Implemedica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\":\"Asdf123.\",\r\n    \"username\":\"santiagocorrez@gmail.com\",\r\n    \"email\":\"santiagocorrez@gmail.com\",\r\n    \"nombre\":\"Santiago Correa Alvarez\",\r\n    \"celular\":\"3205585068\",\r\n    \"role\":[\"ROLE_USER\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				},
+				"description": "Crea un usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "Iniciar Sesion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\":\"Asdf123.\",\r\n    \"username\":\"santiagocorrez@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://backimplemedica.herokuapp.com/api/auth/signin",
+					"protocol": "https",
+					"host": [
+						"backimplemedica",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				},
+				"description": "Iniciar Session"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Productos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"nombre\":\"ProductosKenxin.csv\",\r\n    \"base64\":\"Tm9tYnJlO0NvZGlnbztNYXJjYTtEZXNjcmlwY2lvbjtVcmxJbWFnZW47Ow0KTUFSVElMTE8gTkVVUk9MT0dJQ08gUkVET05ETyA7MjM0MDQyODM1O2tlbnhpbjtNQVJUSUxMTyBORVVST0xPR0lDTyBSRURPTkRPIFJFRjogMzQzMCAgO2h0dHBzOi8vZHJpdmUuZ29vZ2xlLmNvbS91Yz9pZD0xZUt6OXpvb2Q1eFVtazN4c0IxMlhKRmREWWhVMWx1bmc7OzFlS3o5em9vZDV4VW1rM3hzQjEyWEpGZERZaFUxbHVuZw0KTUFSVElMTE8gTkVVUk9MT0dJQ08gVFJJQU5HVUxBUiA7MjM0MDQyODMzO2tlbnhpbjtNQVJUSUxMTyBORVVST0xPR0lDTyBUUklBTkdVTEFSIFJFRjogMzQxMCAgO2h0dHBzOi8vZHJpdmUuZ29vZ2xlLmNvbS91Yz9pZD0xZk03Z2lYeEdaX0lZcHhIUVRaMHF2eUlTa3BUWmNFY1Y7OzFmTTdnaVh4R1pfSVlweEhRVFowcXZ5SVNrcFRaY0VjVg0KTUFSVElMTE8gUEFSQSBSRUZMRUpPUyBCVUNLIDMgU0VSVklDSU9TIENST01BRE87MjM0MDQyODMxO2tlbnhpbjtNQVJUSUxMTyBQQVJBIFJFRkxFSk9TIEJVQ0sgMyBTRVJWSUNJT1MgQ1JPTUFETyBNQVJDQSBLRU5YSU47aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL3VjP2lkPTFveFVlWDU0R1NjelZqZmRUSHBZeTJpOXd2eVVXTXpScTs7MW94VWVYNTRHU2N6VmpmZFRIcFl5Mmk5d3Z5VVdNelJxDQpNSUNST05FQlVMSVpBRE9SIChDT01QTEVUTyk7MTU0MjM1NDcxO2tlbnhpbjtNSUNST05FQlVMSVpBRE9SIChDT01QTEVUTykgTUFSQ0E6IEtFTlhJTiBUQU1BP086IEFEVUxUTy47aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL3VjP2lkPTF2SWNteFpXdE5ERzEwVzBSUS1RQjNXZkJzbEVDWDRlZjs7MXZJY214Wld0TkRHMTBXMFJRLVFCM1dmQnNsRUNYNGVmDQpNSUNST05FQlVMSVpBRE9SIChDT01QTEVUTyk7MTU0MjM1NDcyO0tlbnhpbiA7TUlDUk9ORUJVTElaQURPUiAoQ09NUExFVE8pIE1BUkNBOiBLRU5YSU4gVEFNQT9POiBQRURJQVRSSUNPO2h0dHBzOi8vZHJpdmUuZ29vZ2xlLmNvbS91Yz9pZD0xVzN2QWh1R2xEenhNS3BHV2tiTVd2SlU2aE5na2pKWU47OzFXM3ZBaHVHbER6eE1LcEdXa2JNV3ZKVTZoTmdrakpZTg0KUFVOVEFTIFBMQVNUSUNBUyBBTUFSSUxMQVMgWCAxMDAwIFVORDsxNDUxNTU3MjU7a2VueGluO1BVTlRBUyBQTEFTVElDQVMgQU1BUklMTEFTIFggMTAwMCBVTkQgTUFSQ0EgS0VOWElOO2h0dHBzOi8vZHJpdmUuZ29vZ2xlLmNvbS91Yz9pZD0xMEd6ZTRkNFNmWEFJOVc5em1PdUIxQk56M05jVnQtcV87OzEwR3plNGQ0U2ZYQUk5Vzl6bU91QjFCTnozTmNWdC1xXw0KUFVOVEFTIFBMQVNUSUNBUyBBWlVMRVM7MTQ1MTU1ODI4O2tlbnhpbjtQVU5UQVMgUExBU1RJQ0FTIEFaVUxFUyBYIDUwMCBVTkQgTUFSQ0EgS0VOWElOIFBBUkEgTUlDUk9QSVBFVEEgO2h0dHBzOi8vZHJpdmUuZ29vZ2xlLmNvbS91Yz9pZD0xcjRHak02MmthUjU5ZVkwZ3k3ZTR6SG9QRGh1UFFFMGw7OzFyNEdqTTYya2FSNTllWTBneTdlNHpIb1BEaHVQUUUwbA0KVEFQQUJPQ0FTIERFIFBSRU5TRVMgREVTRUNIQUJMRSAoTk8gRVNURVJJTCkgLSBDT04gVElSSUxMQSBERSBDQVVDSE8gUEFSQSBTVUpFQ0NJT04gQSBMQSBPUkVKQS47MTU1NzY1ODQ3O2tlbnhpbjtUQVBBQk9DQVMgREUgUFJFTlNFUyBERVNFQ0hBQkxFIChOTyBFU1RFUklMKSAtIENPTiBUSVJJTExBIERFIENBVUNITyBQQVJBIFNVSkVDQ0lPTiBBIExBIE9SRUpBLjtodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM/aWQ9MUNGeGFVeVhOYUNraUw2eWFxNUVhOEpDZlhPLW5oeWlEOzsxQ0Z4YVV5WE5hQ2tpTDZ5YXE1RWE4SkNmWE8tbmh5aUQNClRPUk5JUVVFVEUgQVVUT01BVElDTzsxNTU5NjQyMTE7a2VueGluO1RPUk5JUVVFVEUgQVVUT01BVElDTyAgTUFSQ0EgS0VOWElOLjtodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM/aWQ9MXc2QnM2LXB0NDZ3UXlsMlFwUmNRQllCZGxvYjltQktGOzsxdzZCczYtcHQ0NndReWwyUXBSY1FCWUJkbG9iOW1CS0YNClRVQk8gQUwgVkFDSU8gUExBU1RJQ08gVkFDVVVOVEFQT04gSEVNT0dBUkQgQU1BUklMTE87MTYwODU3NjQ7a2VueGluO1RVQk8gQUwgVkFDSU8gUExBU1RJQ08gP1ZBQ1VVTj8gVEFQT04gSEVNT0dBUkQgQU1BUklMTE8gKENPTiBHRUwgQUNUSVZBRE9SKSBERSA1LjAgTUwgREUgMTMgWCAxMDAgTU0gLSBNQVJDQSBLRU5YSU4gICA7aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL3VjP2lkPTFRTGdNVlRjVzNoRWZuclN6N1c5MjJXTmZaUDBxV29Eajs7MVFMZ01WVGNXM2hFZm5yU3o3VzkyMldOZlpQMHFXb0RqDQpUVUJPIEFMIFZBQ0lPIFBMQVNUSUNPID9WQUNVVU4/IFRBUE9OIEhFTU9HQVJEIExJTEEgKCBFRFRBKSBERSA0LjAgTUwgREUgMTMgWCA3NSBNTTsxNjA4NTc1NjtrZW54aW47VFVCTyBBTCBWQUNJTyBQTEFTVElDTyA/VkFDVVVOPyBUQVBPTiBIRU1PR0FSRCBMSUxBICggRURUQSkgREUgNC4wIE1MIERFIDEzIFggNzUgTU0gLSBNQVJDQSBLRU5YSU4gIDtodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM/aWQ9MTdyaE9Xa3V5SGJkeTNvbUQ4VXVhREo5cnc0djhScXBROzsxN3JoT1drdXlIYmR5M29tRDhVdWFESjlydzR2OFJxcFENClRVQk8gQUwgVkFDSU8gUExBU1RJQ08gP1ZBQ1VVTj8gVEFQT04gSEVNT0dBUkQgUk9KTzsxNjA4NTc2MztrZW54aW47VFVCTyBBTCBWQUNJTyBQTEFTVElDTyA/VkFDVVVOPyBUQVBPTiBIRU1PR0FSRCBST0pPICBERSA2LjAgTUwgREUgMTMgWCAxMDAgTU0gLSBDT04gUFJPQ09BR1VMQUNJT04gTUFSQ0EgS0VOWElOICAgICAgICAgIDtodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM/aWQ9MXp4Z1dkTmJkbFNPQVhiN2NOUGwxWjV0aHpULXNOWjFTOzsxenhnV2ROYmRsU09BWGI3Y05QbDFaNXRoelQtc05aMVMNClRVQk8gTUlDUk9UQUlORVIgTElMQSAoRURUQS1LMik7MTYwODYwOTQ7a2V4aW47VFVCTyBNSUNST1RBSU5FUiBMSUxBIChFRFRBLUsyKSBNQVJDQSBLRU5YSU4gIDtodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM/aWQ9MVY3NEs4NlRIVXQzZGN1NXhqckpqQjBzU1lXQWZFNE4yOzsxVjc0Szg2VEhVdDNkY3U1eGpySmpCMHNTWVdBZkU0TjINCkxBTUlOQSBQT1JUQSBPQkpFVE8gREUgVklEUklPIChDQU5UT1MgUFVMSURPUyk7MTQzNjM1ODI3O0tFTlhJTjtMQU1JTkEgUE9SVEEgT0JKRVRPIERFIFZJRFJJTyAoQ0FOVE9TIFBVTElET1MpIC0gVVNPIExBQk9SQVRPUklPIENMSU5JQ08gTUFSQ0EgS0VOWElOIENBSkEgWCA1MCBVTkQgUkVGIDcxMDE7aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL3VjP2lkPTFVYVBwV3B6dTVpQXlSUTdPc2JpT08wbEx6N29kVGs5azs7MVVhUHBXcHp1NWlBeVJRN09zYmlPTzBsTHo3b2RUazlrDQpMQU1JTkEgUE9SVEEgT0JKRVRPUyBCQU5EQSBNQVRFIDsxNDM2MzQ4NzA7S0VOWElOO0xBTUlOQSBQT1JUQSBPQkpFVE9TIEJBTkRBIE1BVEUgIENBSkEgWCA1MCBVTklEQURFUztodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM/aWQ9MVVhUHBXcHp1NWlBeVJRN09zYmlPTzBsTHo3b2RUazlrOzsxVWFQcFdwenU1aUF5UlE3T3NiaU9PMGxMejdvZFRrOWsNCkxBTUlOSUxMQSBDVUJSRS1PQkpFVE9TIERFIDI0IHggNjAgbW0gOzE0MzYzNTkxODtLRU5YSU47TEFNSU5JTExBIENVQlJFLU9CSkVUT1MgREUgMjQgeCA2MCBtbSBDQUpBIFggMTAwIFVOSURBREVTIDtodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM/aWQ9MVVhUHBXcHp1NWlBeVJRN09zYmlPTzBsTHo3b2RUazlrOzsxVWFQcFdwenU1aUF5UlE3T3NiaU9PMGxMejdvZFRrOWsNCkxBTUlOSUxMQSBDVUJSRS1PQkpFVE9TIEVOIFZJRFJJTzsxNDM2MzU0NDc7S0VOWElOO0xBTUlOSUxMQSBDVUJSRS1PQkpFVE9TIEVOIFZJRFJJTywgVVNPIEVOIExBQk9SQVRPUklPIENMSU5JQ08gREUgMjIgeCAyMiBtbSBDQUpBIFggMTAwIFVOSURBREVTIE1BUkNBIEtFTlhJTjtodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM/aWQ9MVVhUHBXcHp1NWlBeVJRN09zYmlPTzBsTHo3b2RUazlrOzsxVWFQcFdwenU1aUF5UlE3T3NiaU9PMGxMejdvZFRrOWsNCiJBR1VKQSBNVUxUSVBMRSBQQVJBIFRPTUEgREUgU0FOR1JFIE5vLiAyMSB4IDEgMS8yIiIgIjsxNDAyMjUxODA7S0VOWElOOyJBR1VKQSBNVUxUSVBMRSBQQVJBIFRPTUEgREUgU0FOR1JFIE5vLiAyMSB4IDEgMS8yIiIgTUFSQ0EgS0VOWElOICAiO2h0dHBzOi8vZHJpdmUuZ29vZ2xlLmNvbS91Yz9pZD0xVWFQcFdwenU1aUF5UlE3T3NiaU9PMGxMejdvZFRrOWs7OzFVYVBwV3B6dTVpQXlSUTdPc2JpT08wbEx6N29kVGs5aw0KVFVCTyBBTCBWQUNJTyBQTEFTVElDTyCoVkFDVVVOqCBUQVBPTiBBTUFSSUxMTyAoR0VMIEFDVElWQURPUikgREUgMy41IE1MIERFIDEzIFggNzUgTU0gLSBNQVJDQSBLRU5YSU4gIDsxNjA4NjA5MjtLRU5YSU47VFVCTyBBTCBWQUNJTyBQTEFTVElDTyCoVkFDVVVOqCBUQVBPTiBBTUFSSUxMTyAoR0VMIEFDVElWQURPUikgREUgMy41IE1MIERFIDEzIFggNzUgTU0gLSBNQVJDQSBLRU5YSU4gIDtodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM/aWQ9MVFMZ01WVGNXM2hFZm5yU3o3VzkyMldOZlpQMHFXb0RqOzsxUUxnTVZUY1czaEVmbnJTejdXOTIyV05mWlAwcVdvRGoNClRVQk8gQUwgVkFDSU8gVklEUklPIKhWQUNVVU6oIFRBUE9OIEhFTU9HQVJEIEFaVUwgKENJVFJBVE8gREUgU09ESU8pIERFIDQuNSBNTCBERSAxMyBYIDc1IE1NIC0gTUFSQ0EgS0VOWElOICA7MTYwODQyOTE7S0VOWElOO1RVQk8gQUwgVkFDSU8gVklEUklPIKhWQUNVVU6oIFRBUE9OIEhFTU9HQVJEIEFaVUwgKENJVFJBVE8gREUgU09ESU8pIERFIDQuNSBNTCBERSAxMyBYIDc1IE1NIC0gTUFSQ0EgS0VOWElOICA7aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL3VjP2lkPTFVYVBwV3B6dTVpQXlSUTdPc2JpT08wbEx6N29kVGs5azs7MVVhUHBXcHp1NWlBeVJRN09zYmlPTzBsTHo3b2RUazlrDQo=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://backimplemedica.herokuapp.com/api/product/setProducts",
+					"protocol": "https",
+					"host": [
+						"backimplemedica",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"product",
+						"setProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Productos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backimplemedica.herokuapp.com/api/product/getAll",
+					"protocol": "https",
+					"host": [
+						"backimplemedica",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"product",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "newPedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Santiago Correa\",\r\n    \"fecha\":\"2020-10-02\",\r\n    \"tipoDoc\":\"C\",\r\n    \"numDoc\":1023978016,\r\n    \"correo\":\"santiagocorrez@gmail.com\",\r\n    \"direccion\":\"Cra 5 D\",\r\n    \"telefono\":\"3271902910\",\r\n    \"ciudad\":{\r\n        \"id\":1,\r\n        \"desc\":\"Bogota\"\r\n    },\r\n    \"observaciones\":\"Nada\",\r\n    \"estado\":\"Pendiente\",\r\n    \"productos\":[   \r\n            {\r\n                \"cantidad\":2,\r\n                \"producto\":\r\n                {\r\n                    \"nombre\": \"MARTILLO NEUROLOGICO REDONDO \",\r\n                    \"codigo\": \"234042835\",\r\n                    \"marca\": \"kenxin\",\r\n                    \"descripcion\": \"MARTILLO NEUROLOGICO REDONDO REF: 3430  \",\r\n                    \"urlImg\": \"https://drive.google.com/uc?id=1eKz9zood5xUmk3xsB12XJFdDYhU1lung\"\r\n                }\r\n            }\r\n        ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/pedidos/newPedido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pedidos",
+						"newPedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener pedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pedidos/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pedidos",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
